@@ -1,0 +1,16 @@
+.d-inline{
+    display: inline;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+.center{
+ margin: 20px;
+}
+.text{
+    font-weight: bold;
+}

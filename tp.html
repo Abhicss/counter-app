@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To-Do List</title>
+</head>
+<body>
+	<h1>To-Do List</h1>
+	<input type="text" id="taskInput">
+	<button onclick="addTask()">Add Task</button>
+	<ul id="taskList"></ul>
+	
+	<script>
+        // Create an empty array to store the tasks
+let tasks = [];
+
+// Get the input and list elements from the DOM
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
+// Add a new task to the array and update the list
+function addTask() {
+  // Get the value of the input element
+  const task = taskInput.value;
+  
+  // Add the task to the array
+  tasks.push(task);
+  
+  // Clear the input element
+  taskInput.value = "";
+  
+  // Update the list
+  updateList();
+}
+
+// Remove a task from the array and update the list
+function removeTask(index) {
+  // Remove the task from the array
+  tasks.splice(index, 1);
+  
+  // Update the list
+  updateList();
+}
+
+// Update the list with the tasks in the array
+function updateList() {
+  // Clear the list element
+  taskList.innerHTML = "";
+  
+  // Loop through the tasks and add them to the list
+  for (let i = 0; i < tasks.length; i++) {
+    // Create a new list item element
+    const li = document.createElement("li");
+    
+    // Add the task to the list item element
+    const taskText = document.createTextNode(tasks[i]);
+    li.appendChild(taskText);
+    
+    // Add a button to remove the task from the list
+    const removeButton = document.createElement("button");
+    removeButton.innerHTML = "X";
+    removeButton.onclick = function() {
+      removeTask(i);
+    };
+    li.appendChild(removeButton);
+    
+    // Add the list item to the list element
+    taskList.appendChild(li);
+  }
+}
+
+
+    </script>
+</body>
+</html>
